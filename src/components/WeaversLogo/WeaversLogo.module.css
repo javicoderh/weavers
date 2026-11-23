@@ -1,0 +1,45 @@
+.link {
+  display: inline-grid;
+  place-items: center;
+  width: clamp(11.5rem, 24vw, 13rem);
+  min-height: 44px;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.link img {
+  grid-area: 1 / 1;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) and (forced-colors: none) {
+  @supports (mask-image: url("")) {
+    .link::after {
+      content: "";
+      grid-area: 1 / 1;
+      width: 100%;
+      aspect-ratio: 232 / 40;
+      pointer-events: none;
+      /* El borde cae en el espacio entre el símbolo y las letras. */
+      clip-path: inset(0 0 0 24%);
+      mask: url("./weavers.svg?no-inline") center / contain no-repeat;
+      background: linear-gradient(90deg, #6385ff, #67d9f8, #e0eaff, #a391ff, #6385ff)
+        0 50% / 200% 100% repeat-x;
+      opacity: 0.74;
+      animation: colorFlow 10s linear infinite;
+    }
+  }
+}
+
+@keyframes colorFlow {
+  to {
+    background-position-x: 200%;
+  }
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--color-wordmark);
+  outline-offset: 4px;
+}

@@ -1,0 +1,21 @@
+.stage {
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  background: radial-gradient(ellipse closest-side, rgb(64 85 232 / 16%), transparent);
+}
+
+.object {
+  display: block;
+  width: min(100%, 30rem);
+  height: auto;
+  overflow: visible;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .object { animation: appear 240ms ease-out; }
+  @keyframes appear {
+    from { opacity: .8; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}

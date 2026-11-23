@@ -1,0 +1,49 @@
+﻿:root {
+  color-scheme: dark;
+  font-family: system-ui, sans-serif;
+  color: var(--color-text);
+  background: var(--color-canvas);
+  --color-accent: #183FE0;
+  --color-text: #F3F6FF;
+  --color-text-muted: #A8B6D1;
+  --color-canvas: #080D19;
+  --color-surface: #10182B;
+  --color-wordmark: #FFFFFF;
+  --color-border: #26334E;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.container {
+  width: min(70rem, calc(100% - 3rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  padding-block: 1.25rem;
+  background: var(--color-canvas);
+}
+
+.site-header > .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.site-footer {
+  padding-block: 1rem;
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}

@@ -1,0 +1,17 @@
+.detail { width: min(70rem, calc(100% - 3rem)); margin: 2rem auto 3.5rem; }
+.back { display: inline-flex; gap: .4rem; align-items: center; min-height: 2.75rem; color: var(--color-text-muted); text-decoration: none; }
+.back:hover { color: white; }
+.layout { display: grid; grid-template-columns: 1.1fr .9fr; align-items: start; gap: clamp(2rem, 5vw, 5rem); margin-top: 2rem; }
+.layout > :last-child { border-radius: .6rem; border: 1px solid var(--color-border); background-color: #0d172d; }
+.detail h1 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.6rem); font-weight: 520; line-height: 1.03; letter-spacing: -.055em; }
+.promise { font-size: 1.2rem; line-height: 1.55; color: #c1cde2; }
+.price { font-size: 1.15rem; font-weight: 650; margin: 1.5rem 0; }
+.price small { font-weight: 400; color: var(--color-text-muted); }
+.detail details { border-top: 1px solid var(--color-border); }
+.detail summary { padding: .95rem .2rem; cursor: pointer; font-weight: 560; }
+.detail details p { margin: 0 0 1.1rem; color: var(--color-text-muted); line-height: 1.6; }
+@media (max-width: 700px) {
+  .detail { margin: 1rem auto 2.5rem; }
+  .layout { grid-template-columns: 1fr; gap: 1.25rem; margin-top: 1rem; }
+  .layout > :last-child svg { max-height: 12rem; }
+}
