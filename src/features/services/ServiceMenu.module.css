@@ -20,6 +20,13 @@
 .controls button:disabled { opacity: .4; cursor: default; }
 .controls button:not(:disabled):hover, .tabs button:hover { color: white; border-color: #6379ac; }
 .menu :focus-visible { outline: 2px solid #b3d3ff; outline-offset: -3px; }
+@media (any-pointer: coarse) {
+  .menu button:focus,
+  .menu button:enabled:active {
+    outline: 2px solid #b3d3ff;
+    outline-offset: -3px;
+  }
+}
 .tabs { display: flex; gap: .5rem; overflow-x: auto; scrollbar-width: thin; scrollbar-color: var(--color-border) transparent; }
 .tabs button {
   display: flex; flex: 1 0 0; align-items: center; justify-content: center; flex-direction: column;

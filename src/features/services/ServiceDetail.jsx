@@ -14,14 +14,14 @@ export function ServiceDetail({ service }) {
       <div>
         <h1>{t(key+'.name')}</h1>
         <p className={styles.promise}>{t(key+'.benefit')}</p>
-        <p className={styles.price}>{t('menu.from', { price: formatPrice(service, language) })} <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small></p>
+        <p className={styles.price}>{service.price == null ? t('menu.customQuote') : t(service.launchOffer ? 'menu.launchFrom' : 'menu.from', { price: formatPrice(service, language) })} {service.price != null && <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small>}</p>
         <details open>
-          <summary>{t('detail.included')}</summary>
+          <summary>{t(service.price == null ? 'detail.projectScope' : 'detail.included')}</summary>
           <p>{t(key+'.scope')}</p>
         </details>
         <details>
           <summary>{t('detail.pricing')}</summary>
-          <p>{t('detail.terms')} {t(key+'.extras')}</p>
+          <p>{service.price != null && t('detail.terms') + ' '}{t(key+'.extras')}</p>
         </details>
       </div>
       <ServiceArtwork slug={service.slug} />

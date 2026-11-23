@@ -4,12 +4,24 @@ import en from './locales/en.json'
 
 const catalogs = { es, en }
 const LanguageContext = createContext(null)
+const preferenceKey = 'weavers-language'
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState('es')
+  const [language, setLanguage] = useState(() => {
+    try {
+      return localStorage.getItem(preferenceKey) === 'en' ? 'en' : 'es'
+    } catch {
+      return 'es'
+    }
+  })
 
   useEffect(() => {
     document.documentElement.lang = language
+    try {
+      localStorage.setItem(preferenceKey, language)
+    } catch {
+      // Language switching also works when storage is unavailable.
+    }
   }, [language])
 
   function t(key, values = {}) {

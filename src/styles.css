@@ -37,7 +37,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: .5rem;
+}
+
+.site-header > .container > a {
+  min-width: 0;
+}
+
+.header-actions {
+  --context-note-inline-end: -2.75rem;
+  display: flex;
+  align-items: center;
 }
 
 .site-footer {

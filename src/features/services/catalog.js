@@ -5,13 +5,13 @@
 // Sistemas multiagente: https://alvaromaureira.cl/servicios-agentes-ia/
 // Talleres por equipo: https://vertexb2b.cl/taller-ia-aplicada/
 export const services = [
-  { slug: 'e-commerce', price: 990000 },
-  { slug: 'pagina-web', price: 490000 },
-  { slug: 'chatbots', price: 940000 },
-  { slug: 'apps', price: 2490000 },
-  { slug: 'agentes', price: 1690000 },
-  { slug: 'sistemas-agenticos', price: 4990000 },
-  { slug: 'capacitaciones-ia', price: 350000, workshop: true },
+  { slug: 'e-commerce', price: 350000 },
+  { slug: 'pagina-web', price: 250000 },
+  { slug: 'chatbots', price: 350000 },
+  { slug: 'apps', price: 1490000, launchOffer: true },
+  { slug: 'agentes', price: 890000, launchOffer: true },
+  { slug: 'sistemas-agenticos' },
+  { slug: 'capacitaciones-ia', price: 15000, workshop: true },
 ]
 
 export function formatPrice(service, language) {

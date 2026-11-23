@@ -1,0 +1,28 @@
+.button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: var(--color-surface);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+.flag {
+  display: block;
+  width: auto;
+  height: 1rem;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px var(--color-border);
+}

@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { ContextNote } from '../components/ContextNote/ContextNote'
+import { LanguageToggle } from '../components/LanguageToggle/LanguageToggle'
 import { WeaversLogo } from '../components/WeaversLogo/WeaversLogo'
 import { useLanguage } from '../i18n/LanguageContext'
 import { services } from '../features/services/catalog'
@@ -25,7 +26,10 @@ function Layout() {
   return <div className="page">
     <header className="site-header"><div className="container">
       <WeaversLogo />
-      <ContextNote label={t('header.aboutLabel')}>{t('header.aboutDescription')}</ContextNote>
+      <div className="header-actions">
+        <ContextNote label={t('header.aboutLabel')}>{t('header.aboutDescription')}</ContextNote>
+        <LanguageToggle />
+      </div>
     </div></header>
     <main ref={main} tabIndex={-1}><Outlet /></main>
     <footer className="site-footer"><div className="container">{t('footer.copyright', { year: new Date().getFullYear() })}</div></footer>

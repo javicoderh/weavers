@@ -82,7 +82,7 @@ export function ServiceMenu() {
       {services.map((s, i) => <button key={s.slug} id={'tab-'+s.slug} role="tab" type="button"
         aria-selected={i === index} aria-controls="service-preview" tabIndex={i === index ? 0 : -1}
         onPointerEnter={event => { if (event.pointerType === 'mouse') select(i) }}
-        onClick={() => select(i)}>
+        onClick={() => select(i, true)}>
         <ServiceIcon name={s.slug} /><span>{t('services.'+s.slug+'.name')}</span>
       </button>)}
     </div>
@@ -94,8 +94,8 @@ export function ServiceMenu() {
         <h2>{t(key+'.name')}</h2>
         <p>{t(key+'.pain')}</p>
         <div className={styles.offer}>
-          <span className={styles.price}>{t('menu.from', { price: formatPrice(service, language) })}</span>
-          <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small>
+          <span className={styles.price}>{service.price == null ? t('menu.customQuote') : t(service.launchOffer ? 'menu.launchFrom' : 'menu.from', { price: formatPrice(service, language) })}</span>
+          {service.price != null && <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small>}
         </div>
         <Link className={styles.cta} to={'/'+service.slug}>{t(key+'.cta')} <ServiceIcon name="go" /></Link>
       </div>
