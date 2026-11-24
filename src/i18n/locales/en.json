@@ -1,4 +1,12 @@
 {
+  "seo.home.title": "Weavers · Web Development, Apps and AI Automation",
+  "seo.home.heading": "Web development, apps and AI automation",
+  "seo.home.description": "We build custom websites, online stores, apps and games. We also build chatbots and AI agents and offer AI training for businesses in Chile.",
+  "seo.workshopia.title": "Workshopia · AI-assisted Workshop Design | Weavers",
+  "seo.workshopia.imageAlt": "Workshopia cover",
+  "footer.services": "Services",
+  "notFound.title": "Page not found",
+  "notFound.home": "Back to home",
   "projects.diseno-experimental.name": "Experimental Design",
   "projects.diseno-experimental.description": "An interactive visual lab in Javier Bravo Zapico’s portfolio.",
   "projects.diseno-experimental.implementation": "We recommend clicking the Yayoi Kusama icon to see the animation.",

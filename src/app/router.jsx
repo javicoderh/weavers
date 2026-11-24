@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { Outlet, Route, Routes, useLocation } from 'react-router-dom'
+import { Link, Outlet, Route, Routes, useLocation } from 'react-router-dom'
 import { ContextNote } from '../components/ContextNote/ContextNote'
 import { LanguageToggle } from '../components/LanguageToggle/LanguageToggle'
 import { WeaversLogo } from '../components/WeaversLogo/WeaversLogo'
@@ -12,30 +12,38 @@ import { ServiceDetail } from '../features/services/ServiceDetail'
 import { About } from '../pages/About/About'
 import { Home } from '../pages/Home/Home'
 import { Workshopia } from '../pages/Workshopia/Workshopia'
+import { publicPaths } from './paths'
+import { pageMetadata } from './seo'
 
 function Layout() {
-  const { t } = useLanguage()
+  const { language, t } = useLanguage()
   const { pathname } = useLocation()
   const previousPath = useRef(pathname)
   const main = useRef(null)
   const [galleryOpen, setGalleryOpen] = useState(false)
   const route = pathname.replace(/\/+$/, '').toLowerCase() || '/'
-  useRouteAnalytics(route === '/' && galleryOpen ? '/trabajos' : route)
+  useRouteAnalytics(publicPaths.includes(route) ? (route === '/' && galleryOpen ? '/trabajos' : route) : null)
   useElementClicks()
   useEffect(() => {
-    const path = pathname.replace(/\/$/, '')
-    const service = services.find(s => '/'+s.slug === path)
-    let title = t('brand.name')
-    if (service) title = t('detail.title', { service: t('services.'+service.slug+'.name') })
-    if (path === '/about') title = t('about.pageTitle', { brand: t('brand.name') })
-    if (route === workshopiaPath) title = t('detail.title', { service: t('projects.workshopia.name') })
-    document.title = title
+    const { siteOrigin, noindex } = document.getElementById('root').dataset
+    const metadata = pageMetadata(route, language, siteOrigin, noindex === 'true')
+    document.title = metadata.title
+    document.head.querySelectorAll('[data-seo]').forEach(tag => tag.remove())
+    for (const [name, attributes] of metadata.tags) {
+      const tag = document.createElement(name)
+      tag.dataset.seo = ''
+      for (const [key, value] of Object.entries(attributes)) tag.setAttribute(key, value)
+      document.head.append(tag)
+    }
+  }, [route, language])
+
+  useEffect(() => {
     if (previousPath.current !== pathname) {
       main.current.focus({ preventScroll: true })
       window.scrollTo(0, 0)
       previousPath.current = pathname
     }
-  }, [pathname, route, t])
+  }, [pathname])
 
   return <div className="page">
     <header className="site-header"><div className="container">
@@ -46,8 +54,21 @@ function Layout() {
       </div>
     </div></header>
     <main ref={main} tabIndex={-1}><Outlet context={setGalleryOpen} /></main>
-    <footer className="site-footer"><div className="container">{t('footer.copyright', { year: new Date().getFullYear() })}</div></footer>
+    <footer className="site-footer"><div className="container">
+      <nav aria-label={t('footer.services')} className="site-footer-links">
+        {services.map(({ slug }) => <Link key={slug} to={'/' + slug}>{t('services.' + slug + '.name')}</Link>)}
+      </nav>
+      {t('footer.copyright', { year: new Date().getFullYear() })}
+    </div></footer>
   </div>
+}
+
+function NotFound() {
+  const { t } = useLanguage()
+  return <section className="container">
+    <h1>{t('notFound.title')}</h1>
+    <Link to="/">{t('notFound.home')}</Link>
+  </section>
 }
 
 export function AppRoutes() {
@@ -57,6 +78,7 @@ export function AppRoutes() {
       <Route path="about" element={<About />} />
       <Route path={workshopiaPath} element={<Workshopia />} />
       {services.map(service => <Route key={service.slug} path={service.slug} element={<ServiceDetail service={service} />} />)}
+      <Route path="*" element={<NotFound />} />
     </Route>
   </Routes>
 }

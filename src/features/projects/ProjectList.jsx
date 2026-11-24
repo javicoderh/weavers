@@ -1,9 +1,12 @@
 import { useId } from 'react'
+import { useHref } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { workshopiaPath } from './catalog'
 import styles from './ProjectList.module.css'
 
 export function ProjectList({ projects, clickPrefix }) {
   const { t } = useLanguage()
+  const workshopiaHref = useHref(workshopiaPath)
   const listId = useId()
   const newTabId = `${listId}-new-tab`
 
@@ -20,7 +23,7 @@ export function ProjectList({ projects, clickPrefix }) {
             <li key={project.id}>
               <a
                 className={styles.card}
-                href={project.url}
+                href={project.url === workshopiaPath ? workshopiaHref : project.url}
                 data-click-key={`${clickPrefix}.${project.id}`}
                 target="_blank"
                 rel="noopener noreferrer"

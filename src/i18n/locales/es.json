@@ -1,4 +1,12 @@
 {
+  "seo.home.title": "Weavers · Desarrollo web, apps y automatización con IA",
+  "seo.home.heading": "Desarrollo web, apps y automatización con IA",
+  "seo.home.description": "Desarrollamos sitios web, tiendas online, aplicaciones y juegos a medida. También creamos chatbots, agentes y capacitaciones de IA para empresas en Chile.",
+  "seo.workshopia.title": "Workshopia · Diseño de talleres con IA | Weavers",
+  "seo.workshopia.imageAlt": "Portada de Workshopia",
+  "footer.services": "Servicios",
+  "notFound.title": "Página no encontrada",
+  "notFound.home": "Volver al inicio",
   "projects.diseno-experimental.name": "Diseño experimental",
   "projects.diseno-experimental.description": "Laboratorio visual interactivo del portafolio de Javier Bravo Zapico.",
   "projects.diseno-experimental.implementation": "Te recomendamos presionar el icono de Yayoi Kusama para ver la animación.",

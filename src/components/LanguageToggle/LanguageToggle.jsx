@@ -2,18 +2,20 @@ import { useLanguage } from '../../i18n/LanguageContext'
 import styles from './LanguageToggle.module.css'
 
 export function LanguageToggle() {
-  const { language, setLanguage, t } = useLanguage()
+  const { language, t } = useLanguage()
+  const { pathname, search, hash } = useLocation()
   const spanish = language === 'es'
+  const targetLanguage = spanish ? 'en' : 'es'
   const label = t('header.switchLanguage')
 
   return (
-    <button
-      type="button"
+    <a
       className={styles.button}
       data-click-key="header.language"
       aria-label={label}
       title={label}
-      onClick={() => setLanguage(spanish ? 'en' : 'es')}
+      href={localizedPath(pathname, targetLanguage) + search + hash}
+      hrefLang={targetLanguage}
     >
       {spanish ? (
         <svg aria-hidden="true" viewBox="0 0 30 20" className={styles.flag}>
@@ -39,6 +41,8 @@ export function LanguageToggle() {
           )}
         </svg>
       )}
-    </button>
+    </a>
   )
 }
+import { useLocation } from 'react-router-dom'
+import { localizedPath } from '../../app/paths'

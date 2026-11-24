@@ -71,7 +71,7 @@ export function ServiceMenu() {
 
   return <section className={styles.menu} aria-labelledby="menu-title">
     <div className={styles.heading}>
-      <h1 id="menu-title">{t('menu.title')}</h1>
+      <h1 id="menu-title">{t('seo.home.heading')}</h1>
       <div className={styles.controls}>
         <span aria-hidden="true" className={styles.counter}>{String(index+1).padStart(2,'0')} / {String(services.length).padStart(2,'0')}</span>
         <button type="button" aria-label={t('menu.previous')} data-click-key="home.services.previous" disabled={index === 0} onClick={() => select(index-1)}><ServiceIcon name="previous" /></button>
