@@ -22,9 +22,12 @@ export function renderPage({ path, language }) {
 }
 
 export function renderHead({ route, path, language }, origin, noIndex) {
-  const { title, tags } = pageMetadata(route ?? path, language, origin, noIndex)
+  const { title, tags, structuredData } = pageMetadata(route ?? path, language, origin, noIndex)
   return renderToStaticMarkup(<>
     <title>{title}</title>
     {tags.map(([Tag, attributes], index) => <Tag key={index} {...attributes} data-seo="" />)}
+    {structuredData && <script type="application/ld+json" data-seo="" dangerouslySetInnerHTML={{
+      __html: JSON.stringify(structuredData).replace(/</g, '\\u003c'),
+    }} />}
   </>)
 }

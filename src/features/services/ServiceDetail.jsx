@@ -15,7 +15,7 @@ export function ServiceDetail({ service }) {
     <Link className={styles.back} to={'/?servicio='+service.slug} data-click-key={`services.${service.slug}.back`}><ServiceIcon name="previous" />{t('detail.back')}</Link>
     <div className={styles.layout}>
       <div>
-        <h1>{t(key+'.name')}</h1>
+        <h1>{t(key+'.heading')}</h1>
         <p className={styles.promise}>{t(key+'.benefit')}</p>
         <p className={styles.price}>{service.price == null ? t('menu.customQuote') : t(service.launchOffer ? 'menu.launchFrom' : 'menu.from', { price: formatPrice(service, language) })} {service.price != null && <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small>}</p>
         <details open>

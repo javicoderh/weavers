@@ -35,6 +35,13 @@ function Layout() {
       for (const [key, value] of Object.entries(attributes)) tag.setAttribute(key, value)
       document.head.append(tag)
     }
+    if (metadata.structuredData) {
+      const script = document.createElement('script')
+      script.type = 'application/ld+json'
+      script.dataset.seo = ''
+      script.textContent = JSON.stringify(metadata.structuredData)
+      document.head.append(script)
+    }
   }, [route, language])
 
   useEffect(() => {

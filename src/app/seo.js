@@ -1,5 +1,6 @@
 import workshopiaCover from '../features/projects/workshopia-cover.webp?no-inline'
 import { workshopiaPath } from '../features/projects/catalog'
+import { formatPrice, services } from '../features/services/catalog'
 import { translate } from '../i18n/LanguageContext'
 import { languages, localizedPath, publicPaths } from './paths'
 
@@ -18,14 +19,15 @@ export function pageMetadata(path, language, origin, noIndex = false) {
     description = t('seo.home.description')
   } else if (route === '/about') {
     title = t('about.pageTitle', { brand: t('brand.name') })
-    description = t('header.aboutDescription')
+    description = t('about.description')
   } else if (workshopia) {
     title = t('seo.workshopia.title')
-    description = t('projects.workshopia.description')
+    description = t('seo.workshopia.description')
   } else {
-    const key = 'services.' + route.slice(1)
-    title = t('detail.title', { service: t(key + '.name') })
-    description = t(key + '.scope')
+    const service = services.find(({ slug }) => '/' + slug === route)
+    const key = 'services.' + service.slug
+    title = t('detail.title', { service: t(key + '.heading') })
+    description = t(key + '.snippet', { price: service.price == null ? '' : formatPrice(service, language) })
   }
 
   const tags = []
@@ -59,5 +61,19 @@ export function pageMetadata(path, language, origin, noIndex = false) {
     meta('twitter:image:alt', imageAlt)
   }
 
-  return { title, tags }
+  const structuredData = origin && route === '/' ? {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': origin + '/#website',
+    name: t('brand.name'),
+    url: origin + '/',
+    inLanguage: languages,
+    publisher: {
+      '@type': 'Organization',
+      '@id': origin + '/#organization',
+      name: t('brand.name'),
+      url: origin + '/',
+    },
+  } : null
+  return { title, tags, structuredData }
 }

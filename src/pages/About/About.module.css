@@ -16,3 +16,6 @@
   font-size: 1.2rem;
   line-height: 1.55;
 }
+
+.about li { margin-block: .65rem; }
+.about a { color: var(--color-text); text-underline-offset: .2em; }
