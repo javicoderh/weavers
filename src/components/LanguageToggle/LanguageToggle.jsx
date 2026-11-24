@@ -10,6 +10,7 @@ export function LanguageToggle() {
     <button
       type="button"
       className={styles.button}
+      data-click-key="header.language"
       aria-label={label}
       title={label}
       onClick={() => setLanguage(spanish ? 'en' : 'es')}

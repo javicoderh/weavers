@@ -1,10 +1,23 @@
+.brand {
+  width: clamp(11.5rem, 24vw, 13rem);
+  min-width: 0;
+}
+
 .link {
   display: inline-grid;
   place-items: center;
-  width: clamp(11.5rem, 24vw, 13rem);
+  width: 100%;
   min-height: 44px;
   max-width: 100%;
   vertical-align: middle;
+}
+
+.tagline {
+  margin: 0;
+  text-align: end;
+  color: var(--color-text-muted);
+  font-size: .75rem;
+  line-height: 1.35;
 }
 
 .link img {

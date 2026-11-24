@@ -7,8 +7,11 @@ export function WeaversLogo() {
   const { t } = useLanguage()
 
   return (
-    <Link className={styles.link} to="/" aria-label={t('header.homeLinkLabel')}>
-      <img src={artwork} width="232" height="40" alt={t('brand.name')} />
-    </Link>
+    <div className={styles.brand}>
+      <Link className={styles.link} to="/" aria-label={t('header.homeLinkLabel')} data-click-key="header.logo">
+        <img src={artwork} width="232" height="40" alt={t('brand.name')} />
+      </Link>
+      <p className={styles.tagline}>{t('brand.tagline')}</p>
+    </div>
   )
 }

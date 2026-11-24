@@ -1,7 +1,7 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import styles from './ContextNote.module.css'
 
-export function ContextNote({ label, children }) {
+export function ContextNote({ label, clickKey, children }) {
   const [mode, setMode] = useState('closed')
   const root = useRef(null)
   const button = useRef(null)
@@ -50,6 +50,7 @@ export function ContextNote({ label, children }) {
         ref={button}
         type="button"
         className={styles.trigger}
+        data-click-key={clickKey}
         aria-label={label}
         aria-expanded={open}
         aria-controls={panelId}

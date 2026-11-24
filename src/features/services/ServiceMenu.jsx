@@ -74,12 +74,13 @@ export function ServiceMenu() {
       <h1 id="menu-title">{t('menu.title')}</h1>
       <div className={styles.controls}>
         <span aria-hidden="true" className={styles.counter}>{String(index+1).padStart(2,'0')} / {String(services.length).padStart(2,'0')}</span>
-        <button type="button" aria-label={t('menu.previous')} disabled={index === 0} onClick={() => select(index-1)}><ServiceIcon name="previous" /></button>
-        <button type="button" aria-label={t('menu.next')} disabled={index === services.length-1} onClick={() => select(index+1)}><ServiceIcon name="next" /></button>
+        <button type="button" aria-label={t('menu.previous')} data-click-key="home.services.previous" disabled={index === 0} onClick={() => select(index-1)}><ServiceIcon name="previous" /></button>
+        <button type="button" aria-label={t('menu.next')} data-click-key="home.services.next" disabled={index === services.length-1} onClick={() => select(index+1)}><ServiceIcon name="next" /></button>
       </div>
     </div>
     <div className={styles.tabs} ref={strip} role="tablist" aria-label={t('menu.title')} onKeyDown={keyboard}>
       {services.map((s, i) => <button key={s.slug} id={'tab-'+s.slug} role="tab" type="button"
+        data-click-key={`home.services.${s.slug}.tab`}
         aria-selected={i === index} aria-controls="service-preview" tabIndex={i === index ? 0 : -1}
         onPointerEnter={event => { if (event.pointerType === 'mouse') select(i) }}
         onClick={() => select(i, true)}>
@@ -97,7 +98,7 @@ export function ServiceMenu() {
           <span className={styles.price}>{service.price == null ? t('menu.customQuote') : t(service.launchOffer ? 'menu.launchFrom' : 'menu.from', { price: formatPrice(service, language) })}</span>
           {service.price != null && <small>{t(service.workshop ? 'menu.workshop' : 'menu.project')}</small>}
         </div>
-        <Link className={styles.cta} to={'/'+service.slug}>{t(key+'.cta')} <ServiceIcon name="go" /></Link>
+        <Link className={styles.cta} to={'/'+service.slug} data-click-key={`home.services.${service.slug}.open`}>{t(key+'.cta')} <ServiceIcon name="go" /></Link>
       </div>
       <ServiceArtwork key={service.slug} slug={service.slug} />
     </div>

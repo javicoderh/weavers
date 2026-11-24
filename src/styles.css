@@ -40,10 +40,6 @@ body {
   gap: .5rem;
 }
 
-.site-header > .container > a {
-  min-width: 0;
-}
-
 .header-actions {
   --context-note-inline-end: -2.75rem;
   display: flex;
