@@ -10,7 +10,7 @@
 ## 2. HTML y rutas
 
 - [x] Prerenderizar las páginas públicas durante el build de Vite. Se verificaron 22 páginas con contenido y una página 404, además de sus recursos locales.
-- [ ] Configurar Vercel para servir las páginas por URL y devolver HTTP 404 en rutas desconocidas.
+- [x] Configurar Vercel para servir las páginas por URL y devolver HTTP 404 en rutas desconocidas. Se verificó en la vista previa generada por GitHub.
 - [x] Probar navegación, galería, selector de idioma y analítica en el navegador. Edge validó también el selector de servicios y la actualización de la canónica al navegar.
 
 ## 3. Metadatos y contenido
@@ -28,5 +28,5 @@
 
 - [x] Generar `sitemap.xml` y declarar su ubicación en `robots.txt`. Se verificaron 22 URLs únicas.
 - [x] Compilar y verificar HTML inicial, metadatos, enlaces e imágenes. Se verificaron los 22 documentos públicos y la página de error.
-- [ ] Verificar en Vercel los estados HTTP, sitemap y vistas previas al compartir.
+- [x] Verificar en la vista previa de Vercel los estados HTTP, el sitemap y los metadatos e imágenes de las tarjetas de la portada y Workshopia.
 - [ ] Verificar el dominio en Google Search Console, enviar el sitemap, inspeccionar URLs y revisar indexación e impresiones.
