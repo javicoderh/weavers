@@ -14,6 +14,7 @@ export function ProjectList({ projects, clickPrefix }) {
         {projects.map(project => {
           const key = `projects.${project.id}`
           const nameId = `${listId}-${project.id}`
+          const actionId = `${nameId}-action`
 
           return (
             <li key={project.id}>
@@ -23,7 +24,7 @@ export function ProjectList({ projects, clickPrefix }) {
                 data-click-key={`${clickPrefix}.${project.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-labelledby={nameId}
+                aria-labelledby={`${actionId} ${nameId}`}
                 aria-describedby={newTabId}
               >
                 <img className={styles.thumbnail} src={project.image} alt="" loading="lazy" width="128" height="128" />
@@ -31,8 +32,11 @@ export function ProjectList({ projects, clickPrefix }) {
                   <h3 id={nameId}>{t(`${key}.name`)}</h3>
                   <p>{t(`${key}.description`)}</p>
                   <p className={styles.implementation}>{t(`${key}.implementation`)}</p>
+                  <span id={actionId} className={styles.action}>
+                    {t(`gallery.action.${project.action ?? 'site'}`)}
+                    <span aria-hidden="true">↗</span>
+                  </span>
                 </div>
-                <span className={styles.arrow} aria-hidden="true">↗</span>
               </a>
             </li>
           )
