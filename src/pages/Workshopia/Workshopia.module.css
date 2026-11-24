@@ -1,0 +1,105 @@
+.case {
+  display: grid;
+  gap: clamp(2rem, 6vw, 4rem);
+  width: min(70rem, calc(100% - 3rem));
+  margin: 1.5rem auto 4rem;
+}
+
+.back {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 2.75rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+}
+
+.back:hover { color: var(--color-text); }
+.case a:focus-visible { outline: 2px solid var(--color-wordmark); outline-offset: 3px; }
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(7rem, 14rem);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3rem);
+  margin-top: -1rem;
+}
+
+.hero img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: .6rem;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 7vw, 5rem);
+  font-weight: 520;
+  letter-spacing: -.055em;
+  line-height: 1;
+}
+
+.tagline {
+  margin: .8rem 0;
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  text-wrap: balance;
+}
+
+.intro {
+  max-width: 66ch;
+  margin: .65rem 0 0;
+  color: var(--color-text-muted);
+  line-height: 1.55;
+}
+
+.case h2 { margin: 0; font-size: clamp(1.45rem, 3vw, 2rem); font-weight: 520; }
+
+.documents, .pipeline {
+  display: grid;
+  gap: .8rem;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+.documents {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  list-style: none;
+}
+
+.document {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: .65rem;
+  height: 100%;
+  padding: 1.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: .6rem;
+  background: var(--color-surface);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.document:hover { border-color: var(--color-accent); }
+.document h3 { margin: 0; font-size: 1.13rem; }
+.document p { margin: 0; color: var(--color-text-muted); line-height: 1.45; }
+.openPdf { font-size: .85rem; }
+
+.pipeline {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  list-style-position: inside;
+}
+
+.pipeline li {
+  padding: .8rem;
+  border-top: 1px solid var(--color-border);
+  line-height: 1.45;
+}
+
+@media (max-width: 560px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero img { width: 8rem; }
+}

@@ -66,6 +66,19 @@ function item(slug, paint) {
           {[0,1,2,3].map(i=><rect key={i} x={15+i%2*27} y={31+Math.floor(i/2)*21} width="20" height="14" rx="2" fill="#6788ee" />)}
         </g>
       </>
+    case 'juegos':
+      return <>
+        {box(-76, -14, 26, 152, 34, 82, paint)}
+        <g transform={frontPlane(-76, -14, 108)}>
+          <rect x="9" y="9" width="134" height="64" rx="12" fill="#10245a" stroke="#a9c8ff" strokeWidth="2" />
+          <path d="M25 40h32M41 24v32" stroke="#b7d3ff" strokeWidth="6" strokeLinecap="round" />
+          <path d="M69 48h14" stroke="#7198ff" strokeWidth="3" strokeLinecap="round" />
+          <circle cx="112" cy="28" r="5" fill="#8ae6ff" />
+          <circle cx="126" cy="41" r="5" fill="#b1ceff" />
+          <circle cx="112" cy="54" r="5" fill="#789aff" />
+          <circle cx="98" cy="41" r="5" fill="#789aff" />
+        </g>
+      </>
     case 'agentes':
       return <>
         {box(-52,-35,40,99,62,66,paint)}

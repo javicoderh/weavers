@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { projects } from '../projects/catalog'
+import { ProjectList } from '../projects/ProjectList'
 import { formatPrice } from './catalog'
 import { ServiceArtwork } from './ServiceArtwork'
 import { ServiceIcon } from './ServiceIcon'
@@ -8,6 +10,7 @@ import styles from './ServiceDetail.module.css'
 export function ServiceDetail({ service }) {
   const { t, language } = useLanguage()
   const key = 'services.' + service.slug
+  const relatedProjects = projects.filter(project => project.types.includes(service.slug))
   return <article className={styles.detail}>
     <Link className={styles.back} to={'/?servicio='+service.slug} data-click-key={`services.${service.slug}.back`}><ServiceIcon name="previous" />{t('detail.back')}</Link>
     <div className={styles.layout}>
@@ -26,5 +29,11 @@ export function ServiceDetail({ service }) {
       </div>
       <ServiceArtwork slug={service.slug} />
     </div>
+    {relatedProjects.length > 0 && (
+      <section className={styles.projects} aria-labelledby="service-projects">
+        <h2 id="service-projects">{t('detail.projects')}</h2>
+        <ProjectList projects={relatedProjects} clickPrefix={`${key}.project`} />
+      </section>
+    )}
   </article>
 }

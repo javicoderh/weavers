@@ -9,6 +9,7 @@ export const services = [
   { slug: 'pagina-web', price: 250000 },
   { slug: 'chatbots', price: 350000 },
   { slug: 'apps', price: 1490000, launchOffer: true },
+  { slug: 'juegos' },
   { slug: 'agentes', price: 890000, launchOffer: true },
   { slug: 'sistemas-agenticos' },
   { slug: 'capacitaciones-ia', price: 15000, workshop: true },
