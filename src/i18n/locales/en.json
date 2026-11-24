@@ -1,4 +1,7 @@
 {
+  "projects.lotus-ember.name": "Lotus Ember",
+  "projects.lotus-ember.description": "A game in development set in a digital garden where pixel art meets nature.",
+  "projects.lotus-ember.implementation": "Built with React and Three.js. Once complete, it can be packaged as a desktop game for release on Steam.",
   "projects.workshopia.name": "Workshopia",
   "projects.workshopia.description": "A Rust server that coordinates skills through the OpenAI API to design, review, and document teaching units and workshops.",
   "projects.workshopia.implementation": "A single run produces the academic plan, facilitator guide, and commercial brochure.",
@@ -79,7 +82,7 @@
   "services.juegos.pain": "Have an idea for a game? We design and develop original games tailored to your project.",
   "services.juegos.cta": "Explore game development",
   "services.juegos.benefit": "Test your idea with a playable prototype and refine the mechanics before expanding the project.",
-  "services.juegos.scope": "We work with you to define the core mechanics, target platforms, and scope of the first playable version.",
+  "services.juegos.scope": "We work with you to define the core mechanics and scope of the first playable version. We build games for browser and desktop and can prepare them for distribution on platforms like Steam.",
   "services.juegos.extras": "Art, sound, multiplayer, and publishing are quoted based on the agreed scope.",
   "services.agentes.name": "AI agents",
   "services.agentes.pain": "Have processes to automate? Ready to bring your business into the AI era? We build agents that handle repetitive tasks in the tools you already use.",

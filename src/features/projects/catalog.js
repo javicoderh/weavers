@@ -2,6 +2,7 @@ import penguinCampaignCover from './esmasqueunpinguino-cover.webp'
 import nicolasZamaraCover from './nicolaszamara-cover.webp'
 import salvemosQuirillucaCover from './salvemosquirilluca-cover.webp'
 import workshopiaCover from './workshopia-cover.webp'
+import lotusEmberCover from './lotus-ember-cover.webp'
 
 export const workshopiaPath = '/trabajos/workshopia'
 
@@ -28,8 +29,14 @@ export const projects = [
   },
   {
     id: 'workshopia',
-    types: ['sistemas-agenticos'],
+    types: ['agentes', 'sistemas-agenticos'],
     url: workshopiaPath,
     image: workshopiaCover,
+  },
+  {
+    id: 'lotus-ember',
+    types: ['juegos'],
+    url: 'https://escenario1.vercel.app/',
+    image: lotusEmberCover,
   },
 ]
